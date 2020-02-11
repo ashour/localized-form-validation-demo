@@ -18,14 +18,13 @@ html_header('form_validation');
 
             <hr>
 
-            <h1 class="title">
-                <?php echo __('title'); ?>
-            </h1>
-            <p class="subtitle">
-                <?php echo __('subtitle'); ?>
-            </p>
+            <h1 class="title"><?php echo __('title'); ?></h1>
+
+            <p class="subtitle"><?php echo __('subtitle'); ?></p>
 
             <form action="/process-signup.php" method="POST" id="signupForm" novalidate>
+                <input type="hidden" name="lang" value="<?php echo lang() ?>">
+
                 <?php echo Input::make('name', $errors)->render() ?>
 
                 <?php echo Input::make('email', $errors, 'email')->render() ?>
