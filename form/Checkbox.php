@@ -19,7 +19,7 @@ class Checkbox extends FormControl
         $checkedAttr = isset($_REQUEST[$this->name]) ? 'checked' : '';
 
         $errorClasses = $this->errorClasses();
-        $errorText = @$this->errors[$this->name];
+        $errorText = $this->errors[$this->name] ?? null;
 
         return <<<HTML
             <div class="field">
