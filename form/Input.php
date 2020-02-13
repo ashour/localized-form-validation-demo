@@ -4,10 +4,8 @@ require_once dirname(__FILE__) . '/../functions.php';
 
 class Input extends FormControl
 {
-    public function __construct($name, $errors, $type = null)
+    public function __construct($name, $errors, $type = 'text')
     {
-        $type = $type ?? 'text';
-
         parent::__construct($name, $errors, $type);
     }
 
@@ -16,10 +14,10 @@ class Input extends FormControl
         $name = $this->name;
         $label = __($this->name);
         $type = $this->type;
-        $value = @$_REQUEST[$this->name];
-        $inputClasses = parent::inputClasses();
-        $errorClasses = parent::errorClasses();
-        $errorText = @$this->errors[$this->name];
+        $value = $_REQUEST[$this->name] ?? null;
+        $inputClasses = $this->inputClasses();
+        $errorClasses = $this->errorClasses();
+        $errorText = $this->errors[$this->name] ?? null;
 
         return <<<HTML
             <div class="field">
