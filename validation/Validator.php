@@ -26,10 +26,10 @@ class Validator
         // We stop at the first rule for a field that _doesn't_ pass, if one
         // exists. And, if we have a failing rule for a field, we add it to our
         // errors array.
-        foreach ($this->rules as $field => $rules) {
+        foreach ($this->rules as $field => $fieldRules) {
             $value = $this->fields[$field] ?? null;
 
-            foreach ($rules as $rule) {
+            foreach ($fieldRules as $rule) {
                 // Some rules, like min(imum) length, have arguments. So
                 // we parse each rule (min|6) to separate the name (min)
                 // from the argument (6).
